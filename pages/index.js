@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import {  View } from 'react-native';
+import { Text } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 import { Amplify } from 'aws-amplify';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 
-function signOutButton() {
+function SignOutButton() {
     console.log("signed in");
     const { signOut } = useAuthenticator();
 
-    return <Button title="Sign Out" onPress={signOut}>Sign Out</Button>;
+    return <Button title="Sign Out" onPress={signOut}></Button>;
 
   }
 
@@ -21,31 +23,26 @@ export default function App1(){
     var isLoggedIn = (authStatus==="authenticated");
 
 
-    function loginPage(){
-
-    }
     return (
         <>
         {authStatus !== 'authenticated' ? (
-            
-            // {authOpen == false ? (
+   
 
             <>
-                <Button onPress={()=>{setAuthOpen(!authOpen)}} title="Sign In"></Button>
+            <Text>TutorLion</Text>
+                    <Button onPress={()=>{setAuthOpen(!authOpen)}} title="Sign In"></Button>
+                    <Button icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
+    Press me
+  </Button>
             {authOpen == true &&
                 <Authenticator/>
             }
-            <Text>{authOpen}</Text>
             </>
-            // ):(
-            //     <Authenticator/>
-            // )}
-
-            
+ 
         ) : (
             <View>
       <Text>SIGNED IN</Text>
-      <signOutButton/>
+      <SignOutButton/>
       </View>
       )}
             
