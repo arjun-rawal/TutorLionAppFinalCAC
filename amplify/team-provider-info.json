@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tutorlionappfinalcac-staging-233130-authRole",
+      "UnauthRoleArn": "arn:aws:iam::680031783851:role/amplify-tutorlionappfinalcac-staging-233130-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::680031783851:role/amplify-tutorlionappfinalcac-staging-233130-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-tutorlionappfinalcac-staging-233130-deployment",
+      "UnauthRoleName": "amplify-tutorlionappfinalcac-staging-233130-unauthRole",
+      "StackName": "amplify-tutorlionappfinalcac-staging-233130",
+      "StackId": "arn:aws:cloudformation:us-east-1:680031783851:stack/amplify-tutorlionappfinalcac-staging-233130/fb527f50-6244-11ee-9d50-0e85daf0d529",
+      "AmplifyAppId": "d30c3k4q7egx22"
+    },
+    "categories": {
+      "auth": {
+        "TutorLionAppFinalCAC": {}
+      }
+    }
+  }
+}
