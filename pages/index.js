@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import { View, Animated, Dimensions } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import { Amplify } from 'aws-amplify';
+import { useFonts } from 'expo-font';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import animation from '../assets/ani4.json';
 
@@ -39,6 +40,19 @@ export default function App1() {
     }).start();
   };
 
+  const [fontsLoaded] = useFonts({
+    'Poppins': require('../assets/Poppins-Regular.ttf'),
+  });
+
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <>
       {authStatus !== 'authenticated' ? (
@@ -52,7 +66,7 @@ export default function App1() {
             ]}>
             <Text
               variant="displayLarge"
-              style={{ position: 'absolute', top: 50, left: 80, zIndex: 20, color: 'white' }}>
+              style={{ position: 'absolute', top: 80, left: 62, zIndex: 20, color: 'white', fontFamily:'Poppins' }}>
               TutorLion
             </Text>
           </Animated.View>
