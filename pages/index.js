@@ -1,11 +1,12 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { View, Animated, Dimensions } from 'react-native';
+import { View, Animated, Dimensions, Image } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import { Amplify } from 'aws-amplify';
 import { useFonts } from 'expo-font';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import animation from '../assets/ani4.json';
+import Carousel from 'react-native-reanimated-carousel';
 
 function SignOutButton() {
   console.log('signed in');
@@ -53,6 +54,18 @@ export default function App1() {
   if (!fontsLoaded) {
     return null;
   }
+  const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
+
+  function IndexCarousel(props){
+    switch (props.index){
+        case 0: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/0.jpg")}  />
+        case 1: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/1.jpg")}  />
+        case 2: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/2.jpg")}  />
+        case 3: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/3.jpg")}  />
+
+    }
+  }
   return (
     <>
       {authStatus !== 'authenticated' ? (
@@ -70,6 +83,30 @@ export default function App1() {
               TutorLion
             </Text>
           </Animated.View>
+
+          <Animated.View style={{position:'absolute', alignItems:'center', zIndex:50, top: height/2.6, opacity:fadeAnim}}>
+            <Carousel
+                loop
+                width={width}
+                height={width * 0.5625}
+                autoPlay={true}
+                data={[...new Array(4).keys()]}
+                scrollAnimationDuration={1000}
+                renderItem={({ index }) => (
+                    <View
+                        style={{
+                            flex: 1,
+                            borderWidth: 1,
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <IndexCarousel index={index}/>
+                    </View>
+                )}
+            />
+        </Animated.View>
+
+
           <Animated.View
             style={[
               {
@@ -86,11 +123,23 @@ export default function App1() {
               },
             ]}>
             <Button
-              style={{ position: 'absolute', top: Dimensions.get('window').height / 2, left: 160 }}
-              onPress={() => {
+              mode='contained-tonal'
+              buttonColor='#ff6800' 
+              style={{fontFamily:"Poppins", position: 'absolute', top: Dimensions.get('window').height / 1.2, left: 160 }}
+              onPressOut={() => {
                 setAuthOpen(!authOpen);
               }}>
-              Sign in
+              Log in
+            </Button>
+            <Button
+              mode='contained-tonal'
+              buttonColor='#ff6800' 
+                   
+              style={{fontFamily:"Poppins", position: 'absolute', top: Dimensions.get('window').height / 1.2+50, left: 155 }}
+              onPressOut={() => {
+                setAuthOpen(!authOpen);
+              }}>
+              Sign up
             </Button>
           </Animated.View>
           <LottieView
