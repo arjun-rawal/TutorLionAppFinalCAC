@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import animation from '../assets/ani4.json';
 import Carousel from 'react-native-reanimated-carousel';
+import LoginScreen from './Login';
 
 function SignOutButton() {
   console.log('signed in');
@@ -151,7 +152,11 @@ export default function App1() {
             onAnimationFinish={fadeIn}
           />
 
-          {authOpen == true && <Authenticator />}
+          {authOpen == true && <View style={{zIndex:1000}}>
+          <LoginScreen/>
+          
+          <Authenticator />
+          </View>}
         </>
       ) : (
         <View>
