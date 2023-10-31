@@ -7,13 +7,13 @@ import { useFonts } from 'expo-font';
 import { Authenticator, useAuthenticator } from '@aws-amplify/ui-react-native';
 import animation from '../assets/ani4.json';
 import Carousel from 'react-native-reanimated-carousel';
-import LoginScreen from './Login';
+import { Appbar } from 'react-native-paper';
 
 function SignOutButton() {
   console.log('signed in');
   const { signOut } = useAuthenticator();
 
-  return <Button title="Sign Out" onPress={signOut}></Button>;
+  return <Button title="Sign Out" style={{position:'absolute',top:40,left:50}} onPress={signOut}>Sign Out</Button>;
 }
 
 export default function App1() {
@@ -84,7 +84,9 @@ export default function App1() {
               TutorLion
             </Text>
           </Animated.View>
+          {authOpen == false &&
 
+<>
           <Animated.View style={{position:'absolute', alignItems:'center', zIndex:50, top: height/2.6, opacity:fadeAnim}}>
             <Carousel
                 loop
@@ -123,6 +125,7 @@ export default function App1() {
                 zIndex: 30,
               },
             ]}>
+
             <Button
               mode='contained-tonal'
               buttonColor='#ff6800' 
@@ -151,13 +154,23 @@ export default function App1() {
             resizeMode="cover"
             onAnimationFinish={fadeIn}
           />
+          </>
+}
+          {authOpen == true && 
+          <View style={{width:'100%',height:'100%', zIndex:1000, position:'relative'}}>
+    <Appbar.Header>
+    <Appbar.Action icon="arrow-left"  onPress={() => {setAuthOpen(!authOpen)}} />
 
-          {authOpen == true && <View style={{zIndex:1000}}>
-          <LoginScreen/>
+       <Appbar.Content title="Log In" />
+
+    </Appbar.Header>
+
           
           <Authenticator />
           </View>}
         </>
+
+
       ) : (
         <View>
           <Text>SIGNED IN</Text>
