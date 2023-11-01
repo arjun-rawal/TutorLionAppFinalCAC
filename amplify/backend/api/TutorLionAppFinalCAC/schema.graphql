@@ -1,0 +1,10 @@
+type Inquiry @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ParentName: String!
+  StudentName: String!
+  PhoneNumber: AWSPhone
+  Email: AWSEmail!
+  Grade: String!
+  Topic: String
+  Info: String
+}
