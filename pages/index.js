@@ -70,6 +70,12 @@ export default function App1() {
         case 1: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/1.jpg")}  />
         case 2: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/2.jpg")}  />
         case 3: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/3.jpg")}  />
+        case 4: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/4.jpg")}  />
+        case 5: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/5.jpg")}  />
+        case 6: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/6.jpg")}  />
+        case 7: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/7.jpg")}  />
+        case 8: return <Image style={{width:null,height:width*0.5625}} source = {require("../assets/carouselImages/8.jpg")}  />
+
 
     }
   }
@@ -113,7 +119,7 @@ export default function App1() {
                 width={width}
                 height={width * 0.5625}
                 autoPlay={true}
-                data={[...new Array(4).keys()]}
+                data={[...new Array(9).keys()]}
                 scrollAnimationDuration={1000}
                 renderItem={({ index }) => (
                     <View
