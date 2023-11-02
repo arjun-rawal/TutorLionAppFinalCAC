@@ -7,4 +7,4 @@ type Inquiry @model @auth(rules: [{allow: public}]) {
   Grade: String!
   Topic: String
   Info: String
-}
+} 

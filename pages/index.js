@@ -4,10 +4,11 @@ import { Text, Button } from 'react-native-paper';
 import LottieView from 'lottie-react-native';
 import { Amplify, Auth } from 'aws-amplify';
 import { useFonts } from 'expo-font';
-import { Authenticator, useAuthenticator, InquiryCreateForm  } from '@aws-amplify/ui-react-native';
+import { Authenticator, useAuthenticator  } from '@aws-amplify/ui-react-native';
 import animation from '../assets/ani4.json';
 import Carousel from 'react-native-reanimated-carousel';
 import { Appbar } from 'react-native-paper';
+import InquiryForm from './Login';
 // import {
 //   NewForm1 
 //  } from './ui-components';
@@ -18,7 +19,7 @@ function SignOutButton() {
   console.log('signed in');
   const { signOut } = useAuthenticator();
 
-  return <Button title="Sign Out" style={{position:'absolute',top:40,left:50}} onPress={signOut}>Sign Out</Button>;
+  return <Button title="Sign Out" style={{position:'absolute',top:700,left:155}} onPress={signOut}>Sign Out</Button>;
 }
 
 export default function App1() {
@@ -191,11 +192,11 @@ export default function App1() {
 
 
       ) : (
-        <View>
-          <Text>SIGNED IN</Text>
+        <>
           {/* <InquiryCreateForm /> */}
+          <InquiryForm/>
           <SignOutButton />
-        </View>
+        </>
       )}
     </>
   );
